@@ -1,5 +1,4 @@
 <?php
-	
-	$r = exec('python test.py',$output,$ret_code);
-	echo $output[0];
+	$r = exec('./sum 3 4 ');
+	echo $r;
 ?>
