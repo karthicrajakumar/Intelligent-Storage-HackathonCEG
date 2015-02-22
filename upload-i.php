@@ -94,7 +94,7 @@ $name = "images/".$_FILES["fileToUpload"]["name"];
                 echo "Python Executed ";
             
             else 
-                echo "sad";
+                echo "Done ! ";
             //echo $output1[1];
        
         if($output1[1] == 0 )
@@ -102,29 +102,29 @@ $name = "images/".$_FILES["fileToUpload"]["name"];
                    
                  if(mysqli_query($con ,"INSERT INTO files values ('','$name','$hash','$id')")) {
 
-                    echo "This- uploaded";
+                    echo "This- File Was Uploaded";
 
 
                 }
                 else {
-                    echo "didnt get inserted";
+                    echo "Didnt get inserted";
 
 
                 }  
 
         }
        else{
-                echo "already exits";
+                echo "Already File exits,";
                 $name= $output1[0];
                  if(mysqli_query($con ,"INSERT INTO files values ('','$name','$hash','$id')")) {
 
-                    echo "Changed File Path";
+                    echo "We'll just reference it to your Account ......Changed File Path";
                     ?> <button class="btn btn-lg"> <a href="<?php echo $name ?>"> View File </a> </button><?php
                     unlink($target_file);
 
                 }
                 else {
-                    echo "didnt get inserted";
+                    echo "Didnt get Inserted";
                     
 
                 }              

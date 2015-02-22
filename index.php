@@ -2,6 +2,9 @@
 	session_start();
 	$user = $_SESSION['username'];
 
+	$id = $_SESSION['id'];
+	require_once('dbconnect.php');
+	$con = dbconnect();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +65,40 @@
 			<button class="btn btn-warning btn-lg"> Upload an Audio file</button>
 
 		</p>
+
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>My Files and Images</h2>
+		</div>
+		<div class="panel-body">
+			<?php
+				$query = mysqli_query($con, "SELECT * FROM file where id = '$id'");
+				//$r = mysqli_num_rows($query);
+				while($result = mysqli_fetch_assoc($query))
+				{
+					echo $result['name']; ?> 
+					<button calss="btn btn-danger"><a href="delete.php?fid=<?php echo $result['fid'] ?>">Delete </a></button>
+					<button calss="btn btn-danger"><a href="edit.php?fid=<?php echo $result['fid'] ?>">edit </a></button><br>
+
+					 <?php
+
+				}
+				$query = mysqli_query($con, "SELECT * FROM files where uid = '$id'");
+				//$r = mysqli_num_rows($query);
+				while($result = mysqli_fetch_assoc($query))
+				{
+					echo $result['name']; ?> 
+					<button calss="btn btn-danger"><a href="delete-i.php?fid=<?php echo $result['fid'] ?>">Delete </a></button><br>
+					
+
+					 <?php
+
+				}
+
+
+			?>
+		</div>
 	</div>
 	
 
